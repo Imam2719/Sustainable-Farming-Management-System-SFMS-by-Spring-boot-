@@ -32,14 +32,19 @@ public class ExpertConsultant {
     @Column(nullable = false, length = 1000)
     private String bio;
 
+    // ============================================
+    // CHANGED FOR POSTGRESQL:
+    // MySQL: columnDefinition="LONGBLOB"
+    // PostgreSQL: columnDefinition="BYTEA"
+    // ============================================
     @Lob
-    @Column(name = "profile_image", columnDefinition="LONGBLOB")
+    @Column(name = "profile_image", columnDefinition="BYTEA")
     private byte[] profileImage;
 
     @Transient
     private String profileImageBase64;
 
-    // Existing getters and setters...
+    // Getters and Setters
 
     public byte[] getProfileImage() {
         return profileImage;
@@ -121,7 +126,6 @@ public class ExpertConsultant {
         this.bio = bio;
     }
 
-    // toString method (if needed)
     @Override
     public String toString() {
         return "ExpertConsultant{" +
